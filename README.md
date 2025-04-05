@@ -19,7 +19,7 @@ Transform your pantry ingredients into delicious recipes with AI magic! FlavorGe
 ## 📦 Installation
 
 ### Prerequisites
-- Python 3.9+
+- Python 3.12
 - [Poetry](https://python-poetry.org/) (recommended)
 - Groq API key (free tier available)
 
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 Create `.env` file:
 ```bash
 GROQ_API_KEY=your_api_key_here
-FLASK_SECRET_KEY=your_secret_key_here
+FLASK_SECRET_KEY=your_secret_key_here(optional)
 ```
 
 ## 🚀 Usage
