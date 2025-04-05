@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Your Custom Recipes - FlavorGenie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --background: #FFF5E6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--background) 0%, #f8f9fa 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .recipe-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        .ingredient-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .ingredient-item {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .user-ingredient {
+            color: var(--secondary);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .user-ingredient::before {
+            content: "✓";
+            margin-right: 0.5rem;
+        }
+
+        .instructions {
+            white-space: pre-wrap;
+            line-height: 1.6;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .instructions::before {
+            content: "👩🍳 Instructions";
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(255,107,107,0.1);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">
+            ← Back to Generator
+        </a>
+        
+        <h1 class="title">
+            <span>✨</span>
+            Your Custom Creations
+        </h1>
+        
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+            <div class="recipe-card">
+                <h2 class="recipe-title">
+                    <span>🍲</span>
+                    {{ recipe.name }}
+                </h2>
+                
+                <div class="recipe-meta">
+                    <div class="meta-item">
+                        ⏱️ {{ recipe.time }}
+                    </div>
+                    <div class="meta-item">
+                        🥵 {{ recipe.difficulty }}
+                    </div>
+                </div>
+                
+                <h3>🥗 Ingredients</h3>
+                <ul class="ingredient-list">
+                    {% for ingredient in recipe.ingredients %}
+                    <li class="ingredient-item">
+                        {% if ingredient.user_provided %}
+                            <span class="user-ingredient">{{ ingredient.name }}</span>
+                        {% else %}
+                            {{ ingredient.name }}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                <div class="instructions">
+                    {{ recipe.instructions }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

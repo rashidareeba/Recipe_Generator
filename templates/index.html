@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍳 FlavorGenie - Smart Recipe Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --background: #FFF5E6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--background) 0%, #f8f9fa 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .input-box {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .ingredient-input {
+            width: 100%;
+            padding: 1.5rem;
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .ingredient-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255,107,107,0.2);
+        }
+
+        .generate-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">
+                <span>🍳</span> 
+                FlavorGenie
+                <span>🧞♂️</span>
+            </h1>
+            <p class="tagline">Transform your ingredients into culinary magic!</p>
+            
+            <form action="/recipes" method="POST">
+                <div class="input-box">
+                    <input type="text" 
+                           id="ingredients" 
+                           name="ingredients"
+                           class="ingredient-input"
+                           placeholder="What's in your pantry? (e.g., chicken, potatoes, garlic)">
+                </div>
+                <button type="submit" class="generate-btn">
+                    🎉 Generate Recipes
+                </button>
+            </form>
+            
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
