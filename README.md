@@ -1,13 +1,11 @@
 # 🍳 FlavorGenie - AI-Powered Recipe Generator
 
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/flask-2.0%2B-green)](https://flask.palletsprojects.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Transform your pantry ingredients into delicious recipes with AI magic! FlavorGenie uses Groq's lightning-fast LLMs to generate personalized cooking ideas based on what you have available.
 
-![Demo Screenshot](https://raw.githubusercontent.com/yourusername/Recipe_Generator/main/assets/screenshot1.png)
-![Screenshot 2](https://raw.githubusercontent.com/yourusername/Recipe_Generator/main/assets/screenshot2.png)
 ## ✨ Features
 
 - 🧠 AI-powered recipe generation using Groq API
